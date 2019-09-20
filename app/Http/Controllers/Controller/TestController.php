@@ -12,6 +12,15 @@ use Illuminate\Support\Facades\Redis;
 
 class TestController extends Controller
 {
+    /*
+        0.配置nginx环境，支持laravel框架
+        1.搞清楚laravel框架的migration机制，并熟悉框架的orm
+        2.写一个get请求，能够读mysql（使用框架的orm），能够读redis（使用框架的cache）
+        3.写一个post请求，能够写mysql（使用框架的orm），能够写redis（使用框架的cache）
+        4.写一个laravel命令，并能够执行命令
+        5.写一个队列任务，并通过laravel框架的异步任务支持工具，执行一个同步任务和一个异步任务
+        6.写一个laravel事件，并进行事件注册，及验证事件是否生效
+     */
     /**
      * 传递参数 uid
      * get请求访问MySQL和redis
@@ -89,10 +98,13 @@ class TestController extends Controller
      */
     public function listen(){
         $oid = request()->oid;
-        echo $oid;
+        echo "oid：".$oid;
+        echo "<br />";
         $data = Order::where(['id'=>$oid])->first();
         if($data){
-           Register::dispatch($data->num);
+            echo "num：".$data->num;
+            echo "<br />";
+            Register::dispatch($data->num);
         }
     }
 }

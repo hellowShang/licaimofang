@@ -23,7 +23,7 @@ class Register
     public function __construct($num)
     {
         //
-        $this->num;
+        $this->num = $num;
     }
 
     /**

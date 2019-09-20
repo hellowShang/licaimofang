@@ -26,11 +26,13 @@ class RegisterEmailSend
      */
     public function handle(Register $event)
     {
-        //
-        if($event->num == 1){
-            file_put_contents("logs/email.log",date("Y-m-d H:i:s").">>>>>>>>>>>>1\n",FILE_APPEND);
+        $num = $event->num;
+        if($num == 1){
+            file_put_contents("logs/number.log",date("Y-m-d H:i:s").">>>>>>>>>>>> 1 \n",FILE_APPEND);
+        }elseif($num <1){
+            file_put_contents("logs/number.log",date("Y-m-d H:i:s").">>>>>>>>>>>> 2 \n",FILE_APPEND);
         }else{
-            file_put_contents("logs/email.log",date("Y-m-d H:i:s").">>>>>>>>>>>>0\n",FILE_APPEND);
+            file_put_contents("logs/number.log",date("Y-m-d H:i:s").">>>>>>>>>>>> 超出预估 \n",FILE_APPEND);
         };
     }
 }
