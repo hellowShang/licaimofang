@@ -26,5 +26,9 @@ Route::post('/test2', 'Controller\TestController@testPost');
 // 发送邮件
 Route::get('/send', 'Controller\TestController@SendEmail');
 
+// 事件
+Route::get('/listen', 'Controller\TestController@listen');
+
+
 Route::get('/test3', 'Controller\TestController@test3');
 Route::get('/home', 'HomeController@index')->name('home');

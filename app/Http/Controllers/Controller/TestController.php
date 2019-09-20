@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers\Controller;
 
+use App\Events\Register;
 use App\Jobs\Manage;
+use App\Model\Order;
 use App\Model\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -86,6 +88,11 @@ class TestController extends Controller
      * 事件注册
      */
     public function listen(){
-
+        $oid = request()->oid;
+        echo $oid;
+        $data = Order::where(['id'=>$oid])->first();
+        if($data){
+           Register::dispatch($data->num);
+        }
     }
 }
